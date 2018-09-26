@@ -2,3 +2,11 @@
 	width:30px;
 	height:30px;
 }
+
+.alive{
+	color:'#000000';
+}
+
+.dead{
+	color:'#FFFFFF';
+}
