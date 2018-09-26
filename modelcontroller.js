@@ -44,7 +44,7 @@ class Model{
 		function reduceIndices(valueA, valueB) {
 			return valueA + valueB;
 		}
-		return pairs.map(mapIndices).reduce(reduceIndices);
+		return pairs.map(mapIndices, this).reduce(reduceIndices);
 	}
 
 	copyState() {
@@ -61,10 +61,10 @@ class Model{
 
 	update(){
 		var newState = this.copyState();
-		for(var r in ROWS){
-			for(var c in COLS){
-				var num_neighbors = count_neighbors(r,c);
-				if(model[r][c]){ // is alive
+		for(var r = 0; r < ROWS; r++){
+			for(var c = 0; c < COLS; c++){
+				var num_neighbors = this.count_neighbors(r,c);
+				if(this.state[r][c]){ // is alive
 					if(num_neighbors <= 1){
 						newState[r][c] = 0;
 					}
@@ -86,21 +86,17 @@ class Model{
 	}
 }
 
-
 var view = new View(10,10);
-debugger;
 var model = new Model();
 var isDone = false;
 
 function run(model, view) {
+	view.render(model);
+	debugger;
 	model.update();
+	debugger;
 	view.render(model);
 }
 
-var func = setInterval(run(model, view), 200);
-
-while(true){
-	if(model.isComplete){
-		clearInterval(func);
-	}
-}
+//var func = setInterval(run(model, view), 200);
+run(model, view);

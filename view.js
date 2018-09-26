@@ -15,7 +15,7 @@ export default class View{
 				var cell = tr.appendChild(document.createElement('td'));
 				var cellDiv = document.createElement('div');
 				cellDiv.id = `cell_${r}_${c}`;
-				cellDiv.className = 'gameCell';
+				cellDiv.className = 'gameCell dead';
 				cell.appendChild(cellDiv);
 				cell.addEventListener('click',(function(el,r,c,i){
 					return function(){
@@ -32,12 +32,12 @@ export default class View{
 			for(var col in model.state[row]){
 				var cell = document.getElementById(`cell_${row}_${col}`);
 				if(model.state[row][col]){
-					if(cell.className !== 'alive'){
-						cell.className = 'alive';
+					if(cell.className !== 'gameCell alive'){
+						cell.className = 'gameCell alive';
 					}
 				}else{
-					if(cell.className !== 'dead'){
-						cell.className = 'dead';
+					if(cell.className !== 'gameCell dead'){
+						cell.className = 'gameCell dead';
 					}
 				}
 			}
