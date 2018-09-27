@@ -15,9 +15,11 @@ class Model{
 			}
 			this.state.push(row);
 		}
-		this.state[5][5] = 1;
-		this.state[5][6] = 1;
-		this.state[4][5] = 1;
+		this.state[1][2] = 1;
+		this.state[2][3] = 1;
+		this.state[3][3] = 1;
+		this.state[3][2] = 1;
+		this.state[3][1] = 1;
 
 		this.isComplete = false;
 	}
@@ -90,13 +92,12 @@ var view = new View(10,10);
 var model = new Model();
 var isDone = false;
 
-function run(model, view) {
-	view.render(model);
-	debugger;
+function run() {
 	model.update();
-	debugger;
 	view.render(model);
+	setTimeout(run, 100);
 }
 
 //var func = setInterval(run(model, view), 200);
-run(model, view);
+view.render(model);
+setTimeout(run, 100);
