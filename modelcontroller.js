@@ -15,11 +15,12 @@ class Model{
 			}
 			this.state.push(row);
 		}
-		this.state[1][2] = 1;
-		this.state[2][3] = 1;
-		this.state[3][3] = 1;
-		this.state[3][2] = 1;
-		this.state[3][1] = 1;
+		var shift = 3;
+		this.state[1+shift][2] = 1;
+		this.state[2+shift][3] = 1;
+		this.state[3+shift][3] = 1;
+		this.state[3+shift][2] = 1;
+		this.state[3+shift][1] = 1;
 
 		this.isComplete = false;
 	}
@@ -98,6 +99,6 @@ function run() {
 	setTimeout(run, 100);
 }
 
-//var func = setInterval(run(model, view), 200);
+// begin
 view.render(model);
 setTimeout(run, 100);
